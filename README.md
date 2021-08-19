@@ -1,19 +1,19 @@
 # MongoDB-Notes
 
-MongoD -> It is the host process for the Database
+MongoD -> It is the host process for the Database <br/>
 Mongo -> It is a command line shell that connects to specifics instance of MongoD 
 
-SQL TERMS/CONCEPT   MongoDB TERMS/CONCEPT
-Database         ->  Database
-Tables           ->  Collections
-Rows             ->  Documents(BSON)
-Columns          ->  Fields
+SQL TERMS &emsp; MongoDB TERMS/CONCEPT <br/>
+Database         ->  Database <br/>
+Tables           ->  Collections <br/>
+Rows             ->  Documents(BSON) <br/>
+Columns          ->  Fields <br/>
 
-MongoDB commands 
+MongoDB commands  <br/> 
 
-1. Database commands
-View all databases
-show dbs
+1. Database commands <br/>
+View all databases <br/> 
+show dbs <br/>
 
 Create a new or switch databases 
 use dbName
