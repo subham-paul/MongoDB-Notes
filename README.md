@@ -15,90 +15,90 @@ MongoDB commands  <br/>
 View all databases <br/> 
 show dbs <br/>
 
-Create a new or switch databases 
-use dbName
+Create a new or switch databases <br/>
+use dbName <br/>
 
-View current Database
-db
+View current Database <br/>
+db <br/>
 
-Delete Database 
-db.dropDatabase()
+Delete Database <br/>
+db.dropDatabase() <br/>
 
-2. Collection Commands
-Show Collections
-show collections
+2. Collection Commands <br/>
+Show Collections <br/>
+show collections <br/>
 
-Create a collection named 'comments'
-db.createCollection('comments')
+Create a collection named 'comments' <br/>
+db.createCollection('comments') <br/>
 
-Drop a collection named 'comments'
-db.comments.drop()
+Drop a collection named 'comments' <br/>
+db.comments.drop() <br/>
 
-3. Row(Document) Commands
-Show all Rows in a Collection 
-db.comments.find()
+3. Row(Document) Commands <br/>
+Show all Rows in a Collection <br/>
+db.comments.find() <br/>
 
-Show all Rows in a Collection (Prettified)
-db.comments.find().pretty()
+Show all Rows in a Collection (Prettified) <br/>
+db.comments.find().pretty() <br/>
 
-Find the first row matching the object
-db.comments.findOne({name: 'Subham'})
+Find the first row matching the object <br/>
+db.comments.findOne({name: 'Subham'}) <br/>
 
-Insert One Row
-db.comments.insert({
-    'name': 'Subham',
-    'lang': 'JavaScript',
-    'member_since': 5
- })
+Insert One Row <br/>
+db.comments.insert({ <br/>
+    "name": 'Subham', <br/>
+    'lang': 'JavaScript', <br/>
+    'member_since': 5 <br/>
+ }) <br/>
 
-Insert many Rows
-db.comments.insertMany([{
-    'name': 'Harry',
-    'lang': 'JavaScript',
-    'member_since': 5
-    }, 
-    {'name': 'Rohan',
-    'lang': 'Python',
-    'member_since': 3
-    },
-    {'name': 'Lovish',
-    'lang': 'Java',
-    'member_since': 4
-}])
+Insert many Rows <br/>
+db.comments.insertMany([{ <br/>
+    'name': 'Harry', <br/>
+    'lang': 'JavaScript', <br/>
+    'member_since': 5 <br/>
+    },  <br/>
+    {'name': 'Rohan', <br/>
+    'lang': 'Python', <br/>
+    'member_since': 3 <br/>
+    }, <br/>
+    {'name': 'Lovish', <br/>
+    'lang': 'Java', <br/>
+    'member_since': 4 <br/>
+}]) <br/>
 
-Search in a MongoDb Database
-db.comments.find({lang:'Python'})
+Search in a MongoDb Database <br/>
+db.comments.find({lang:'Python'}) <br/>
 
-Limit the number of rows in output
-db.comments.find().limit(2)
+Limit the number of rows in output <br/>
+db.comments.find().limit(2) <br/>
 
-Count the number of rows in the output
-db.comments.find().count()
+Count the number of rows in the output <br/>
+db.comments.find().count() <br/>
 
 Update a row
-db.comments.update({name: 'Shubham'},
-{'name': 'Harry',
-    'lang': 'JavaScript',
-    'member_since': 51
-}, {upsert: true})
+db.comments.update({name: 'Shubham'}, <br/>
+{'name': 'Harry', <br/>
+    'lang': 'JavaScript', <br/>
+    'member_since': 51 <br/>
+}, {upsert: true}) <br/>
 
-Mongodb Increment Operator
-db.comments.update({name: 'Rohan'},
-{$inc:{
-    member_since: 2
-}})
+Mongodb Increment Operator <br/>
+db.comments.update({name: 'Rohan'}, <br/>
+{$inc:{ <br/>
+    member_since: 2 <br/>
+}}) <br/>
 
-Mongodb Rename Operator
-db.comments.update({name: 'Rohan'},
-{$rename:{
-    member_since: 'member'
-}})
+Mongodb Rename Operator <br/>
+db.comments.update({name: 'Rohan'}, <br/>
+{$rename:{ <br/>
+    member_since: 'member' <br/>
+}}) <br/>
 
-Delete Row 
-db.comments.remove({name: 'Harry'})
+Delete Row <br/>
+db.comments.remove({name: 'Harry'}) <br/>
 
-Less than/Greater than/ Less than or Eq/Greater than or Eq
-db.comments.find({member_since: {$lt: 90}})
-db.comments.find({member_since: {$lte: 90}})
-db.comments.find({member_since: {$gt: 90}})
-db.comments.find({member_since: {$gte: 90}})
+Less than/Greater than/ Less than or Eq/Greater than or Eq <br/>
+db.comments.find({member_since: {$lt: 90}}) <br/>
+db.comments.find({member_since: {$lte: 90}}) <br/>
+db.comments.find({member_since: {$gt: 90}}) <br/>
+db.comments.find({member_since: {$gte: 90}}) <br/>
