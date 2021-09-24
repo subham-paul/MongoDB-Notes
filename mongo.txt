@@ -1,0 +1,118 @@
+//For add multiple values in array format
+db.getCollection('newTest').insert({name : "Aritri", lang:["Java", "Pyhton"],company: {add: "Noida", phone: 9854102367}});
+
+//create DB and drop db
+> use temp
+db.dropDatabase()
+
+// create collection and drop collection
+> db.students.drop()
+
+// insert document inside collection
+
+// all queries
+
+// projection or find
+
+// update collection
+
+// delete data inside collection
+db.getCollection('testData').remove( { Marks: { $gt: 70 } } )
+
+// Limit <When you find only top 10 data of collection>, 
+db.<collectionName>.find().limit(10).pretty();
+
+//Skip <When you skip first 2 documents or rows of collection >, 
+db.<collectionName>.find().skip(1).pretty();
+
+//Sort <when you sort value using assending(1) or decending(-1) order>
+db.<collectionName>.find().sort(1).pretty();
+
+
+// $elemMatch <When you find value inside object of object>
+db.<collectionName>.find({"social" : {$elemMatch : {name : "youTube"}}}).pretty()
+
+
+//Distinct <when you check different types data in single field or columns>
+> db.getCollection('returant').distinct("Location")
+> db.getCollection('testData').distinct( "Marks")
+
+//count() <when count data of the collection>
+>db.getCollection('testData').find().count()
+
+
+//MongoDB aggregation framework
+> $project -> $match -> $group -> $sort -> output
+
+//$match <Filters the documents to pass only the documents that match the specified condition(s) to the next pipeline stage>
+> db.getCollection('posts').aggregate([{$match: {"author" : "Joe"}}])
+
+//$group <Groups input documents by the specified _id expression and for each distinct grouping, outputs a document. 
+> db.getCollection('returant').aggregate([{$group: {_id : '$Location'}}])
+> db.getCollection('userData').aggregate([{$group: {_id : '$department', 
+                                        totalMarks: {$sum: "$marks"}}}]) <FOR CALC MARKS SUM>
+> db.getCollection('userData').aggregate([{$group: {_id : '$department', 
+                                        avgMarks: {$avg: "$marks"}}}]) <FOR CALC MARKS AVG>
+
+//Multiple grouping 
+> db.getCollection('userData').aggregate([{$group: {_id :{age: "$age", gender:"$gender"}}}]) <FOR CALC MARKS AVG>
+
+//$count
+> db.getCollection('studentT').aggregate([{$match:{active:"true"}},
+                                            { $count: "active student"}])
+
+//$skip, 
+> db.article.aggregate([{ $skip : 5 }]);
+
+//$limit <aggregation>
+> db.getCollection('studentT').aggregate([{$project:{name:1,location:1}},
+                                        { $limit : 2 }])
+> db.getCollection('studentT').aggregate([{$match:{"gender":"female"}}, 
+                                            {$limit:1}])
+
+//$sort
+
+//$project
+> db.getCollection('userData').aggregate([{$match : {status:"active"}}, 
+                                        {$project:{name:1,email:1,_id:0}}]).pretty();
+> db.getCollection('studentT').aggregate([{$match:{active:"false"}},
+                                        {$project:{_id:0,name:"1",age:1}}])
+> db.getCollection('studentT').aggregate([{$match:{active:"true"}},
+                                        {$project:{_id:0,Fname:"$name",age:1,active:1}}])
+
+
+
+//$type
+> db.getCollection('studentT').aggregate([{$match:{active:"true"}},
+                                            {$project:{_id:0,name:1, age:{$type:"$age"}}}])
+
+//$unwind <for using same value of array define in the another field>
+> db.getCollection('studentT').aggregate([{$unwind:"$lang"}])
+
+//$out <for store output data in another collection>
+> db.getCollection('studentT').aggregate([{$match:{active:'true'}}, 
+                                        {$project:{name:1,marks:1,_id:0}},
+                                        {$out:'nameMarks'}])
+
+
+//MongoDB import and export
+1. mongodump <for export>
+    all database  -> $ mongodump
+    single database -> $ mongodump -d databaseName
+    single collection -> $ mongodump -d databaseName -c collectionName
+
+2. mongorestore <for import>
+    single database -> $ mongorestore -d databaseName / path /
+    single collection -> $ mongorestore -d databaseName -c collectionName / path /
+
+// $lookup <Used for relation between two collections>
+> db.getCollection('userData').aggregate([
+    {$lookup:
+    {
+        from:"returant",
+        localField:"name",
+        foreignField:"fname",
+        as:"anything"
+    }
+    }
+    ])
