@@ -131,13 +131,23 @@ Columns   &emsp;       -> &emsp; Fields <br/>
         ```
 
     - Delete Row : <br/>
-        ``` db.comments.remove({name: 'Harry'}) ``` <br/>
+       ```
+       db.comments.remove({name: 'Harry'})
+       ```
 
-    - Less than/Greater than/ Less than or Eq/Greater than or Eq : <br/>
-        ``` db.comments.find({member_since: {$lt: 90}}) ``` <br/>
-        ``` db.comments.find({member_since: {$lte: 90}}) ``` <br/>
-        ``` db.comments.find({member_since: {$gt: 90}}) ``` <br/>
-        ``` db.comments.find({member_since: {$gte: 90}}) ``` <br/>
+    - Less than/Greater than/ Less than or Eq/Greater than or Eq :
+        ```
+        db.comments.find({member_since: {$lt: 90}})
+        ```
+        ```
+        db.comments.find({member_since: {$lte: 90}})
+        ```
+        ```
+        db.comments.find({member_since: {$gt: 90}})
+        ```
+        ```
+        db.comments.find({member_since: {$gte: 90}})
+        ```
 
 
 ## MongoDB Aggregation:
