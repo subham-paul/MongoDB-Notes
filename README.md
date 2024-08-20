@@ -135,7 +135,7 @@ Columns   &emsp;       -> &emsp; Fields <br/>
        db.comments.remove({name: 'Harry'})
        ```
 
-    - Less than/Greater than/ Less than or Eq/Greater than or Eq :
+    - Less than / Greater than / Less than or Eq / Greater than or Eq examples in below :
         ```
         db.comments.find({member_since: {$lt: 90}})
         ```
