@@ -11,7 +11,7 @@ Columns   &emsp;       -> &emsp; Fields <br/>
 
 ## MongoDB Commands : <br/> 
 
-1. Database commands -> <br/>
+1. Database Commands In MySQL -> <br/>
     - View all databases :
         ```
         show dbs 
@@ -32,7 +32,7 @@ Columns   &emsp;       -> &emsp; Fields <br/>
         db.dropDatabase()
         ```
 
-2. Collection Commands -> <br/>
+2. Collection Commands In MongoDB -> <br/>
     - Show Collections : 
         ```
         show collections
